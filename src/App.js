@@ -1,9 +1,9 @@
 import React from 'react'
-import SignIn from './components/SignIn'
+import Body from './components/Body'
 
 const App = () => {
   return (
-    <div><SignIn/></div>
+    <Body/>
   )
 }
 
