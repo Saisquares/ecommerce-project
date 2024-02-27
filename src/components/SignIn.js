@@ -1,16 +1,22 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoBagHandle } from "react-icons/io5";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import validateForm from "../utils/validateForm";
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [isSignIn, setIsSignIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const email = useRef(null);
   const password = useRef(null);
@@ -68,9 +74,28 @@ const SignIn = () => {
             setErrorMessage(errorMessage);
           }
         });
-        
     }
   };
+
+  //manage users to set the signin and signout feature and passing the data to the store
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // signup,signin firest time it is called
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const {uid, email, displayName} = user.uid;
+        dispatch(addUser({uid:uid, email: email, displayName: displayName}));
+        navigate('/dashboard')
+    
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate('/')
+
+      }
+    });
+  }, []);
 
   return (
     <div>
