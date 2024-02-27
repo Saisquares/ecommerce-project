@@ -2,16 +2,25 @@ import React, { useRef, useState } from "react";
 import { IoBagHandle } from "react-icons/io5";
 import { RiArrowRightUpLine } from "react-icons/ri";
 import validateForm from "../utils/validateForm";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const SignIn = () => {
-  const [isSignIn, setIsSignIn] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const email = useRef(null);
   const password = useRef(null);
   const fullname = useRef(null);
 
-  
+  // toggle signin/signup
+  const handleToggle = () => {
+    setIsSignIn(!isSignIn);
+  };
+
   const handleClickBtn = () => {
     const message = validateForm(
       email?.current?.value,
@@ -19,12 +28,49 @@ const SignIn = () => {
       fullname?.current?.value
     );
     setErrorMessage(message);
-  };
+    if (message) return;
+    if (!isSignIn) {
+      //sign up
+      createUserWithEmailAndPassword(
+        auth,
+        email?.current?.value,
+        password?.current?.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      //sign in
 
-  const handleToggle = () => {
-    setIsSignIn(!isSignIn);
+      signInWithEmailAndPassword(
+        auth,
+        email?.current?.value,
+        password?.current?.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if (errorCode === "auth/invalid-credential") {
+            setErrorMessage("Invalid credential");
+          } else {
+            setErrorMessage(errorMessage);
+          }
+        });
+        
+    }
   };
-  
 
   return (
     <div>
@@ -89,10 +135,13 @@ const SignIn = () => {
               required
             />
 
-            {errorMessage && <div className="px-3  py-1 ">
-              <p className="text-red-600 text-sm font-medium">{errorMessage}</p>
-            </div> }
-
+            {errorMessage && (
+              <div className="px-3  py-1 ">
+                <p className="text-red-600 text-sm font-medium">
+                  {errorMessage}
+                </p>
+              </div>
+            )}
 
             <button
               className="bg-blue-700 font-semibold text-white p-3 m-3 rounded-sm"
