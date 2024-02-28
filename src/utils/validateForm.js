@@ -5,7 +5,7 @@ const validateForm = (email, password, fullname) => {
     const fullnameTest = /^[a-zA-Z\s]{5,}$/.test(fullname)
     
     if(!mailTest) return "Email is invalid"
-    if(!passwordTest) return "Password is invalid"
+    if(!passwordTest) return "Invalid. Password needs a lowercase, uppercase, digit, special symbol, and 8 characters minimum"
     if(!fullnameTest) return "Full name should only contain alphabet characters"
 
     return null

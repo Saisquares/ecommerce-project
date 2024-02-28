@@ -7,14 +7,17 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { LuEyeOff } from "react-icons/lu";
+import { LuEye } from "react-icons/lu";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
-  const [isSignIn, setIsSignIn] = useState(false);
+  const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(true)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -27,6 +30,14 @@ const SignIn = () => {
     setIsSignIn(!isSignIn);
   };
 
+  // for password visible toggle
+  const handleVisblePassword = () => {
+    setShowPassword(!showPassword)
+    // same like toggle if password toggle to text , if text toggle to password
+    password.current.type = password.current.type === 'password' ? 'text' : 'password';
+  }
+
+  //for signin/signup
   const handleClickBtn = () => {
     const message = validateForm(
       email?.current?.value,
@@ -118,7 +129,7 @@ const SignIn = () => {
               {isSignIn ? "Hi, Welcome Back👋" : "Hello👋 Register here"}
             </p>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col relative">
             {!isSignIn && (
               <>
                 <label htmlFor="fullname" className="text-black  mx-3">
@@ -150,6 +161,7 @@ const SignIn = () => {
             <label htmlFor="password" className="mx-3">
               Password
             </label>
+            
             <input
               className="border border-slate-700 p-3 m-3 rounded-sm"
               type="password"
@@ -159,10 +171,11 @@ const SignIn = () => {
               placeholder="Enter your password"
               required
             />
+            <span className="cursor-pointer absolute top-[9.5rem] right-8 " onClick={handleVisblePassword}>{showPassword ? <LuEyeOff /> : <LuEye />}</span>
 
             {errorMessage && (
               <div className="px-3  py-1 ">
-                <p className="text-red-600 text-sm font-medium">
+                <p className="text-red-600 text-xs font-medium">
                   {errorMessage}
                 </p>
               </div>
