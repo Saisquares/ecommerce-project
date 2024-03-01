@@ -97,7 +97,7 @@ const SignIn = () => {
         // https://firebase.google.com/docs/reference/js/auth.user
         const {uid, email, displayName} = user.uid;
         dispatch(addUser({uid:uid, email: email, displayName: displayName}));
-        navigate('/dashboard')
+        navigate('/home')
     
       } else {
         // User is signed out

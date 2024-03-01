@@ -1,24 +1,14 @@
-import React from 'react'
-import SignIn from './SignIn'
-import Dashboard from './Dashboard'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import React from 'react';
+import { Outlet } from 'react-router-dom'; 
+import Header from './Header';
 
 const Body = () => {
-    const appRouter = createBrowserRouter([
-        {
-            path: '/',
-            element: <SignIn/>
-        },
-        {
-            path: '/dashboard',
-            element: <Dashboard/>
-        },
-    ])
   return (
     <div>
-        <RouterProvider router={appRouter}/>
+      <Header/>
+      <Outlet/>
     </div>
-  )
-}
+  );
+};
 
-export default Body
+export default Body;
