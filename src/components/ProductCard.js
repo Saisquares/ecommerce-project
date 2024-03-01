@@ -20,7 +20,6 @@ const ProductCard = ({data}) => {
   };
 
   const handleAddToCartBtn = (index) => {
-    console.log(products[index])
     dispatch(addToCart(products[index]));
   };
   return (

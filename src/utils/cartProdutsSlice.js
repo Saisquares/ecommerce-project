@@ -7,11 +7,11 @@ const cartProdutsSlice = createSlice({
         addToCart: (state, action) => {
              state.cartItems.push(action.payload)
         },
-        removeProduct: (state, action) => {
-            state.cartItems.pop()
+        removeProductInCart: (state, action) => {
+            state.cartItems = state.cartItems.filter((product) => product.id !== action.payload)
         }
     }
 });
 
-export  const { addToCart } = cartProdutsSlice.actions;
+export  const { addToCart,removeProductInCart } = cartProdutsSlice.actions;
 export default  cartProdutsSlice.reducer;
