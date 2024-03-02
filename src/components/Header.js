@@ -39,7 +39,6 @@ const Header = () => {
             <Link to={"/home"}><li className="px-3 py-1 mx-4 cursor-pointer active:outline-none border-b-2 border-transparent active:border-b-2  active:border-blue-700"><p className="text-blue-700 text-lg font-semibold" >Home</p></li></Link>
             <Link to="/about"><li className="px-3 py-1 mx-4 cursor-pointer active:outline-none border-b-2 border-transparent active:border-b-2  active:border-blue-700"><p className="text-blue-700 text-lg font-semibold" >About</p></li></Link>
             <Link to={"/cart"}><li className="px-3 py-1 mx-4 cursor-pointer active:outline-none border-b-2 border-transparent active:border-b-2  active:border-blue-700"><p className="text-blue-700 text-lg font-semibold flex items-center" >Cart <span className="px-1"><IoCart/></span><span className="text-sm">{cartItems.length}</span></p></li></Link>
-            <Link to={"/wishlist"}><li className="px-3 py-1 mx-4 cursor-pointer active:outline-none border-b-2 border-transparent active:border-b-2  active:border-blue-700"><p className="text-blue-700 text-lg font-semibold flex items-center" >Wishlist</p></li></Link>
           </ul>
         </div>
         <div className="signOutBtn mx-4">
