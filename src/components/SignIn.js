@@ -17,9 +17,9 @@ import { useNavigate } from "react-router-dom";
 const SignIn = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [showPassword, setShowPassword] = useState(true)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(true);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -32,10 +32,11 @@ const SignIn = () => {
 
   // for password visible toggle
   const handleVisblePassword = () => {
-    setShowPassword(!showPassword)
+    setShowPassword(!showPassword);
     // same like toggle if password toggle to text , if text toggle to password
-    password.current.type = password.current.type === 'password' ? 'text' : 'password';
-  }
+    password.current.type =
+      password.current.type === "password" ? "text" : "password";
+  };
 
   //for signin/signup
   const handleClickBtn = () => {
@@ -95,15 +96,13 @@ const SignIn = () => {
         // User is signed in, see docs for a list of available properties
         // signup,signin firest time it is called
         // https://firebase.google.com/docs/reference/js/auth.user
-        const {uid, email, displayName} = user.uid;
-        dispatch(addUser({uid:uid, email: email, displayName: displayName}));
-        navigate('/home')
-    
+        const { uid, email, displayName } = user.uid;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+        navigate("/home");
       } else {
         // User is signed out
         dispatch(removeUser());
-        navigate('/')
-
+        navigate("/");
       }
     });
   }, []);
@@ -161,7 +160,7 @@ const SignIn = () => {
             <label htmlFor="password" className="mx-3">
               Password
             </label>
-            
+
             <input
               className="border border-slate-700 p-3 m-3 rounded-sm"
               type="password"
@@ -171,7 +170,14 @@ const SignIn = () => {
               placeholder="Enter your password"
               required
             />
-            <span className="cursor-pointer absolute top-[9.5rem] right-8 " onClick={handleVisblePassword}>{showPassword ? <LuEyeOff /> : <LuEye />}</span>
+            <span
+              className={`cursor-pointer absolute ${
+                isSignIn ? "top-[9.5rem]" : "top-[15.5rem]"
+              } right-8`}
+              onClick={handleVisblePassword}
+            >
+              {showPassword ? <LuEyeOff /> : <LuEye />}
+            </span>
 
             {errorMessage && (
               <div className="px-3  py-1 ">
