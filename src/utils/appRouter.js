@@ -10,7 +10,7 @@ import Body from "../components/Body"
 
 const appRouter = createBrowserRouter([
   {
-    path: "/ecommerce-project",
+    path: "/",
     element: <SignIn />,
     errorElement: <ErrorPage/>
   },
@@ -19,7 +19,7 @@ const appRouter = createBrowserRouter([
     element: <Body/>,
     children:[
         {
-            path: "/",
+            path: "/home",
             element: <Home />,
           },
           {
