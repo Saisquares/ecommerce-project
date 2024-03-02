@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 const CartIsEmpty = () => {
   const navigate = useNavigate()
   return (
-    <div className="grid content-center h-screen mx-auto  align-middle w-6/12 ">
+    <div className="grid content-center h-screen mx-auto  align-middle w-9/12 md:w-6/12 lg:w-6/12 ">
         <img
-          className="w-32 md:w-32 lg:w-48 mx-auto"
+          className="w-40 md:w-32 lg:w-48 mx-auto"
           src={emptyCartLogo}
           alt="cartempty"
         />
-        <p className="text-center font-semibold text-lg md:text-2xl my-2 py-2 ">
+        <p className="text-center font-semibold text-lg md:text-2xl lg:text-2xl md:my-2 lg:my-2 md:py-2 lg:py-2 ">
           Your Cart Is Currently Empty
         </p>
         <p className="text-center  md:w-7/12 mx-auto">Looks like you have not added anything to you cart. Go ahead & explore top categories</p>
