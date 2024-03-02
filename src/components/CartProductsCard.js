@@ -9,7 +9,7 @@ const CartProductsCard = ({ data, handleRemoveCartProduct,handleIncreaseQuantity
         <img className="h-28 object-contain" src={image} alt={title} />
       </div>
       <div className="col-span-2">
-        <p className="text-xl">{title}</p>
+        <p className=" text-sm font-semibold lg:font-normal md:text-xl lg:text-xl">{title}</p>
         <p className="text-gray-500">{category}</p>
         <div className="mt-6 flex items-center">
           <span className="font-semibold">Quantity</span>

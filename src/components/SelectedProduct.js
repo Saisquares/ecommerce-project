@@ -15,13 +15,13 @@ const SelectedProduct = () => {
       };
 
   return (
-    <div className='pt-32 grid grid-cols-2 w-9/12   mx-auto '>
+    <div className='pt-16 lg:pt-32 grid grid-col-1 lg:grid-cols-2 w-9/12   mx-auto '>
         <div className='self-start  justify-self-center '>
             <img className='h-80 my-12 ' src={image} alt='title'/>
         </div>
         <div className='self-center  justify-self-center'>
             <div>
-                <h1 className='text-3xl font-bold my-5'>{title}</h1>
+                <h1 className='text-xl lg:text-3xl font-bold my-5'>{title}</h1>
                 <p className='my-2 text-md'>{description}</p>
                 <p className='my-2'>Category - {category}</p>
                 <p className="text-lg  flex items-center"><span className='mr-2'>Rating</span>

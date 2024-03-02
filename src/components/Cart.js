@@ -31,9 +31,9 @@ const Cart = () => {
   if (cartProducts.length === 0) return <CartIsEmpty />;
 
   return (
-    <div className="pt-20 w-6/12 md:w-6/12 mx-auto">
+    <div className="pt-20 w-11/12 md:w-8/12 lg:w-6/12 mx-auto">
       <div>
-        <h1 className="text-center font-bold text-4xl py-8 border-b-2">
+        <h1 className="text-center font-bold text-xl lg:text-4xl py-4 lg:py-8 border-b-2">
           Shopping Cart
         </h1>
       </div>
