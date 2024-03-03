@@ -14,9 +14,10 @@ const CartProductsCard = ({ data, handleRemoveCartProduct,handleIncreaseQuantity
         <div className="mt-6 flex items-center">
           <span className="font-semibold">Quantity</span>
           <div className="pl-2 flex items-center">
-            <button className=" px-2 bg-gray-400 text-lg font-bold mx-1 text-black rounded-sm" onClick={() => handleIncreaseQuantity(index)}>+</button>
+          <button className=" px-2.5 bg-gray-400 text-lg font-bold mx-1 text-black rounded-sm" onClick={() => handleDecreaseQuantity(index)}>-</button>
             <span className="font-semibold mx-1">{quantity}</span>
-            <button className=" px-2.5 bg-gray-400 text-lg font-bold mx-1 text-black rounded-sm" onClick={() => handleDecreaseQuantity(index)}>-</button>
+            <button className=" px-2 bg-gray-400 text-lg font-bold mx-1 text-black rounded-sm" onClick={() => handleIncreaseQuantity(index)}>+</button>
+            
           </div>
         </div>
       </div>

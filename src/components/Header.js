@@ -23,7 +23,7 @@ const Header = () => {
       });
   };
   return (
-    <div className="shadow-sm fixed bg-white w-full z-20">
+    <div className="shadow-md fixed bg-white w-full z-20">
       
       <div className="container-box flex justify-between items-center"> 
         <div className="logo">
