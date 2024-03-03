@@ -116,10 +116,10 @@ const SignIn = () => {
         // User is signed out
         dispatch(removeUser());
         navigate("/");
-        toast.success('Signed out successfully')
       }
     });
   }, []);
+
 
   return (
     <div>
