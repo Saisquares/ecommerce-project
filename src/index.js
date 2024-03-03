@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={appStore}>
     <RouterProvider router={appRouter} />
-    <ToastContainer
+    <ToastContainer 
   position="bottom-left"
   autoClose={5000}
   hideProgressBar={false}
