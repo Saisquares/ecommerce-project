@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
@@ -13,6 +14,7 @@ import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -29,6 +31,7 @@ const SignIn = () => {
   const handleToggle = () => {
     setIsSignIn(!isSignIn);
   };
+
 
   // for password visible toggle
   const handleVisblePassword = () => {
@@ -52,12 +55,21 @@ const SignIn = () => {
       createUserWithEmailAndPassword(
         auth,
         email?.current?.value,
-        password?.current?.value
+        password?.current?.value,
       )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
+
+          updateProfile(auth.currentUser, {
+            displayName: fullname?.current?.value
+          }).then(() => {
+            
+            toast.success(`Welcome ${user.displayName}`);
+          }).catch((error) => {
+            // Handle errors in setting the display name
+            console.error("Error setting display name:", error);
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -75,7 +87,7 @@ const SignIn = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          toast.success(`Welcome ${user.displayName}`)
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -96,13 +108,15 @@ const SignIn = () => {
         // User is signed in, see docs for a list of available properties
         // signup,signin firest time it is called
         // https://firebase.google.com/docs/reference/js/auth.user
-        const { uid, email, displayName } = user.uid;
+        const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+  
         navigate("/home");
       } else {
         // User is signed out
         dispatch(removeUser());
         navigate("/");
+        toast.success('Signed out successfully')
       }
     });
   }, []);

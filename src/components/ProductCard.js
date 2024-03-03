@@ -2,6 +2,7 @@ import { MdStar } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../utils/cartProdutsSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ data }) => {
   const { id, title, price, image, rating, category, index } = data;
@@ -10,6 +11,7 @@ const ProductCard = ({ data }) => {
 
   const handleAddToCartBtn = (index) => {
     dispatch(addToCart(products[index]));
+    toast.success('Product added to cart')
   };
 
   return (

@@ -8,6 +8,7 @@ import {
   removeProductInCart,
 } from "../utils/cartProdutsSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const cartProducts = useSelector((store) => store.cart.cartItems);
@@ -18,9 +19,9 @@ const Cart = () => {
 
   const handleRemoveCartProduct = (id) => {
     dispatch(removeProductInCart(id));
+    toast('Product removed from cart')
   };
   const handleIncreaseQuantity = (id) => {
-    
     dispatch(quantityIncrease(id));
   };
 
