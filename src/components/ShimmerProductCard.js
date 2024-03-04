@@ -10,12 +10,12 @@ const ShimmerProductCard = () => {
         <div>
             <ShimmerThumbnail height={150} rounded />
             <ShimmerTitle  line={3} gap={10} variant="secondary" />
-          <span className="flex items-center justify-between ">
-          <span><ShimmerBadge width={130}  /></span>
-            <p className=" font-bold flex items-center">
-              <span className=''><ShimmerBadge width={80} /></span>
-            </p>
-          </span>
+          <div className="flex items-center justify-between ">
+          <div><ShimmerBadge width={130}  /></div>
+            <div className=" font-bold flex items-center">
+              <div className=''><ShimmerBadge width={80} /></div>
+            </div>
+          </div>
           <ShimmerThumbnail height={40} rounded />
         </div>
       </div>
