@@ -28,7 +28,7 @@ const Home = () => {
       }
     };
     fetchProducts();
-  }, [dispatch]);
+  }, []);
 
   return (
     <div>
@@ -91,11 +91,11 @@ const Home = () => {
         ) : filterProducts.length === 0 ? (
           <div className="flex flex-col justify-center items-center my-36">
             <TbMoodSad className="text-5xl" />
-            <h1 className="font-bold text-xl">Whoops!</h1>
+            <h1 className="font-bold text-xl">Oops! Apologies</h1>
             <p className="text-gray-500">
-              Sorry, but nothing matched your search.
+            We couldn't find any products
             </p>
-            <p className="text-gray-500">Please try some different keywords</p>
+            <p className="text-gray-500">Please try again</p>
           </div>
         ) : (
           filterProducts.map(
