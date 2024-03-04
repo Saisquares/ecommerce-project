@@ -32,11 +32,11 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-11/12 md:w-9/12 lg:w-9/12 mx-auto  grid  md:grid-cols-2 lg:grid-cols-2 justify-center place-items-center lg:pb-4 pt-20 md:pt-24 lg:pt-24 gap-2 md:gap-5 lg:gap-5">
+      <div className="w-10/12 md:w-9/12 lg:w-9/12 mx-auto  grid  md:grid-cols-2 lg:grid-cols-2 justify-center place-items-center lg:pb-4 pt-20 md:pt-24 lg:pt-24 gap-2 md:gap-5 lg:gap-5">
         <div className="place-self-end relative w-full">
           <input
             type="text"
-            className="w-96 lg:w-full outline-none px-2 h-8 shadow-md bg-blue-700 text-white placeholder-white font-semibold relative"
+            className="w-96 lg:w-full outline-none px-2 h-8 shadow-md bg-blue-700 text-white placeholder-white font-normal relative"
             placeholder="Search Products"
             name="searchText"
             value={searchText}

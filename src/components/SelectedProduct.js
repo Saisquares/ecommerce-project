@@ -3,6 +3,7 @@ import { MdStar } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { addToCart } from '../utils/cartProdutsSlice'
+import { toast } from 'react-toastify'
 
 const SelectedProduct = () => {
     const {id} = useParams()
@@ -12,12 +13,13 @@ const SelectedProduct = () => {
 
     const handleAddToCartBtn = () => {
         dispatch(addToCart(products[id]));
+        toast.success('Product added to cart')
       };
 
   return (
-    <div className='pt-8 md:pt-32 lg:pt-32 grid grid-col-1 lg:grid-cols-2 w-9/12 mx-auto '>
+    <div className='pt-16 md:pt-32 lg:pt-32 grid grid-col-1 lg:grid-cols-2 w-9/12 mx-auto '>
         <div className='self-start  justify-self-center '>
-            <img className='h-64 md:h-80 lg:h-80 mt-10 md:my-12 lg:my-12' src={image} alt='title'/>
+            <img className='h-64 md:h-80 lg:h-80 my-10 md:my-12 lg:my-12' src={image} alt='title'/>
         </div>
         <div className='self-center  justify-self-center'>
             <div>

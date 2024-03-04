@@ -19,7 +19,7 @@ const Cart = () => {
 
   const handleRemoveCartProduct = (id) => {
     dispatch(removeProductInCart(id));
-    toast('Product removed from cart')
+    toast.success('Product removed from cart')
   };
   const handleIncreaseQuantity = (id) => {
     dispatch(quantityIncrease(id));
