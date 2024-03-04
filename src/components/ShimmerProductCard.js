@@ -8,7 +8,7 @@ const ShimmerProductCard = () => {
     >
       <div className="m-6 ">
         <div>
-            <ShimmerThumbnail height={180} rounded />
+            <ShimmerThumbnail height={150} rounded />
             <ShimmerTitle  line={3} gap={10} variant="secondary" />
           <span className="flex items-center justify-between ">
           <span><ShimmerBadge width={130}  /></span>

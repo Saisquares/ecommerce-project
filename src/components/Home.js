@@ -78,16 +78,15 @@ const Home = () => {
         </div>
       </div>
       
-      <div className="pt-5 flex flex-wrap mx-auto justify-center ">
+      <div className=" flex flex-wrap mx-auto justify-center ">
       {isLoading ? (
-          <div className="m-10 font-bold text-xl flex flex-wrap justify-center">
+          <div className="mx-10 font-bold text-xl flex flex-wrap justify-center pt-0">
             <ShimmerProductCard/>
             <ShimmerProductCard/>
             <ShimmerProductCard/>
             <ShimmerProductCard/>
             <ShimmerProductCard/>
             <ShimmerProductCard/>
-
           </div>
         ) : filterProducts.length === 0 ? (
           <div className="flex flex-col justify-center items-center my-36">
