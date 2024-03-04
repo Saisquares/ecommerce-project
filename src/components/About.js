@@ -9,6 +9,7 @@ import { TbBrandRedux } from "react-icons/tb";
 import { SiTailwindcss } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
+import ShimmerProductCard from "./ShimmerProductCard";
 
 const About = () => {
   return (
@@ -27,6 +28,7 @@ const About = () => {
         <div className="px-1" ><FaGithub /></div>
       
       </div>
+      
     </div>
   );
 };

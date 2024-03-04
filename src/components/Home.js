@@ -6,6 +6,7 @@ import ProductCard from "./ProductCard";
 import { MdFilterAlt } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { TbMoodSad } from "react-icons/tb";
+import ShimmerProductCard from './ShimmerProductCard'
 
 const Home = () => {
   const products = useSelector((store) => store.products);
@@ -79,7 +80,15 @@ const Home = () => {
       
       <div className="pt-5 flex flex-wrap mx-auto justify-center ">
       {isLoading ? (
-          <div className="m-10 font-bold text-xl">Loading...</div>
+          <div className="m-10 font-bold text-xl flex flex-wrap justify-center">
+            <ShimmerProductCard/>
+            <ShimmerProductCard/>
+            <ShimmerProductCard/>
+            <ShimmerProductCard/>
+            <ShimmerProductCard/>
+            <ShimmerProductCard/>
+
+          </div>
         ) : filterProducts.length === 0 ? (
           <div className="flex flex-col justify-center items-center my-36">
             <TbMoodSad className="text-5xl" />
