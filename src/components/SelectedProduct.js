@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdStar } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { addToCart } from '../utils/cartProdutsSlice'
 import { toast } from 'react-toastify'
 
 const SelectedProduct = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
+    const [addToCartBtn,setAddToCartBtn] = useState(true);
+  const navigate = useNavigate()
     const products = useSelector((store) => store?.products)
     const {  title, price, rating, image, quantity, category,description} = products[id];
 
     const handleAddToCartBtn = () => {
+      setAddToCartBtn(!addToCartBtn)
+      if(addToCart){
         dispatch(addToCart(products[id]));
         toast.success('Product added to cart')
+      }
       };
 
   return (
@@ -33,7 +38,17 @@ const SelectedProduct = () => {
               {rating?.rate}
             </p>
                 <p className='my-1 md:my-3 lg:my-3 font-bold text-md md:text-2xl lg:text-2xl'>${price}</p>
-                <button onClick={handleAddToCartBtn} className='text-center w-full my-4 bg-blue-700 text-white py-2 rounded'>Add To Cart</button>
+                {addToCartBtn ? (<button
+            className='text-center w-full my-4 bg-blue-700 text-white py-2 rounded'
+            onClick={handleAddToCartBtn}
+          >
+            Add to Cart
+          </button>) : (<button
+            className='text-center w-full my-4 bg-blue-700 text-white py-2 rounded'
+            onClick={() => navigate('/cart')}
+          >
+            Go to Cart
+          </button>)}
             </div>
         </div>
     </div>
