@@ -42,12 +42,17 @@ const Home = () => {
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
-              const FilterProducts = products.filter((product) =>
-                product.title
-                  .toLowerCase()
-                  .includes(searchText.toLocaleLowerCase())
-              );
-              setFilterProducts(FilterProducts);
+              if(e.target.value === ""){
+                setFilterProducts(products)
+              // const FilterProducts = products.filter((product) =>
+              //   product.title
+              //     .toLowerCase()
+              //     .includes(searchText.toLocaleLowerCase())
+              // );
+              // setFilterProducts(FilterProducts);
+
+              }
+              
             }}
             id="searchText"
           />
