@@ -1,17 +1,24 @@
 import { MdStar } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../utils/cartProdutsSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const ProductCard = ({ data }) => {
   const { id, title, price, image, rating, category, index } = data;
   const dispatch = useDispatch();
+  const [addToCartBtn,setAddToCartBtn] = useState(true);
+  const navigate = useNavigate()
+
   const products = useSelector((store) => store.products);
 
   const handleAddToCartBtn = (index) => {
-    dispatch(addToCart(products[index]));
-    toast.success('Product added to cart')
+    setAddToCartBtn(!addToCartBtn)
+    if(addToCart){
+      dispatch(addToCart(products[index]));
+      toast.success('Product added to cart')
+    }
   };
 
   return (
@@ -38,12 +45,17 @@ const ProductCard = ({ data }) => {
             </p>
           </span>
           </Link>
-          <button
+          {addToCartBtn ? (<button
             className="bg-blue-700 text-white px-2 py-1 my-2 rounded w-full"
             onClick={() => handleAddToCartBtn(index)}
           >
             Add to Cart
-          </button>
+          </button>) : (<button
+            className="bg-blue-700 text-white px-2 py-1 my-2 rounded w-full"
+            onClick={() => navigate('/cart')}
+          >
+            Go to Cart
+          </button>)}
         </div>
       </div>
     </div>
