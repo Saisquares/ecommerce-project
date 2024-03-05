@@ -44,13 +44,6 @@ const Home = () => {
               setSearchText(e.target.value);
               if(e.target.value === ""){
                 setFilterProducts(products)
-              // const FilterProducts = products.filter((product) =>
-              //   product.title
-              //     .toLowerCase()
-              //     .includes(searchText.toLocaleLowerCase())
-              // );
-              // setFilterProducts(FilterProducts);
-
               }
               
             }}

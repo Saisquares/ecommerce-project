@@ -41,6 +41,12 @@ const SignIn = () => {
       password.current.type === "password" ? "text" : "password";
   };
 
+    const handleByPassSignin = () => {
+      navigate("/home");
+      toast.success(`Welcome Guest`)
+    }
+
+
   //for signin/signup
   const handleClickBtn = () => {
     const message = validateForm(
@@ -110,7 +116,6 @@ const SignIn = () => {
         // https://firebase.google.com/docs/reference/js/auth.user
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
-  
         navigate("/home");
       } else {
         // User is signed out
@@ -236,7 +241,11 @@ const SignIn = () => {
               )}
             </button>
           </div>
+          
         </form>
+        <div className="text-center my-1">
+          <button onClick={handleByPassSignin} className="font-semibold  text-blue-700">Continue as Guest</button>
+          </div>
       </div>
     </div>
   );
