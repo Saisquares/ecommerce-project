@@ -82,7 +82,7 @@ const Home = () => {
            <div className=" bg-blue-700 flex w-full justify-center md:justify-around lg:justify-around items-center">
 
              <div className="flex">
-              <button className="-left-5 font-bold" onClick={handleFilterToggleBtn}><IoClose  className="font-bold text-xl"/></button>
+              <button className="-left-4 font-bold shadow-lg" onClick={handleFilterToggleBtn}><IoClose  className="font-bold text-xl"/></button>
              <p className="ml-1 pr-1 md:mx-2 lg:mx-2 text-sm md:text-md lg:text-md font-semibold">Price Range</p>
               <select className="bg-transparent border rounded-md outline-none text-[0.75rem] md:text-md lg:text-md">
                 <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Default</option>
