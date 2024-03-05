@@ -7,6 +7,7 @@ import { MdFilterAlt } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { TbMoodSad } from "react-icons/tb";
 import ShimmerProductCard from './ShimmerProductCard'
+import { IoClose } from "react-icons/io5";
 
 const Home = () => {
   const products = useSelector((store) => store.products);
@@ -14,6 +15,12 @@ const Home = () => {
   const [searchText, setSearchText] = useState("");
   const [filterProducts, setFilterProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [filterToggleBtn, setFilterToggleBtn] = useState(false)
+
+
+  const handleFilterToggleBtn = () => {
+    setFilterToggleBtn(!filterToggleBtn)
+  }
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -44,6 +51,7 @@ const Home = () => {
               setSearchText(e.target.value);
               if(e.target.value === ""){
                 setFilterProducts(products)
+
               }
               
             }}
@@ -63,16 +71,40 @@ const Home = () => {
             <FaSearch className="text-white " />
           </button>
         </div>
-        <div className=" w-96 md:w-full lg:w-full place-self-start  px-2 pt-1 h-8 bg-blue-700 text-white shadow-md">
-          <div className="flex items-center justify-center cursor-pointer">
-            <div className="font-semibold flex  items-center">
-              <span>
-                <MdFilterAlt className="size-5 font-black" />
-              </span>
+        <div className=" w-96 md:w-full lg:w-full place-self-start  px-2 pt-1 h-8 bg-blue-700 text-white shadow-md relative ">
+          <div className=" w-full flex flex-col items-center justify-center ">
+            <div className=" w-full justify-center font-semibold flex  items-center cursor-pointer " onClick={handleFilterToggleBtn}>
+              <span><MdFilterAlt className="size-5 font-black" /></span>
               <span>Filters</span>
             </div>
-            <p></p>
+           <div  className={`${filterToggleBtn ? "flex" : "hidden"} w-full absolute items-center`}>
+           
+           <div className=" bg-blue-700 flex w-full justify-center md:justify-around lg:justify-around items-center">
+
+             <div className="flex">
+              <button className="-left-5 font-bold" onClick={handleFilterToggleBtn}><IoClose  className="font-bold text-xl"/></button>
+             <p className="ml-1 pr-1 md:mx-2 lg:mx-2 text-sm md:text-md lg:text-md font-semibold">Price Range</p>
+              <select className="bg-transparent border rounded-md outline-none text-[0.75rem] md:text-md lg:text-md">
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Default</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Low to High</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">High to Low</option>
+              </select>
+             </div>
+             <div className="flex ">
+             <p className="ml-2 pr-1 md:mx-2 lg:mx-2 text-sm md:text-md lg:text-md font-semibold">Category</p>
+              <select className="bg-transparent border rounded-md outline-none text-[0.75rem] md:text-md lg:text-md">
+              <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Default</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Men's Clothing</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Women's Clothing</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Jewelery</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Electronics</option>
+
+              </select>
+             </div>
+            </div>
+           </div>
           </div>
+          
         </div>
       </div>
       
