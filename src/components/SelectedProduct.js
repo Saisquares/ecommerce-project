@@ -9,14 +9,16 @@ const SelectedProduct = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
     const [addToCartBtn,setAddToCartBtn] = useState(true);
-  const navigate = useNavigate()
-    const products = useSelector((store) => store?.products)
-    const {  title, price, rating, image, quantity, category,description} = products[id];
+    const navigate = useNavigate()
+    const products = useSelector((store) => store.products)
+  
+    const selectedProduct = products.find((product) => product.id === parseInt(id));
+    const { title, price, description, category, image, rating } = selectedProduct;
 
     const handleAddToCartBtn = () => {
       setAddToCartBtn(!addToCartBtn)
-      if(addToCart){
-        dispatch(addToCart(products[id]));
+      if(addToCartBtn){
+        dispatch(addToCart(selectedProduct));
         toast.success('Product added to cart')
       }
       };

@@ -63,7 +63,6 @@ const Home = () => {
     else if(selectedIndex === 2){
       priceRangeFilterProducts.sort((a,b) => b.price - a.price)
     }
-  
     setFilterProducts(priceRangeFilterProducts);
     
 }
@@ -188,7 +187,7 @@ const Home = () => {
                   image,
                   rating,
                   category,
-                  index,
+                 
                 }}
               />
             )

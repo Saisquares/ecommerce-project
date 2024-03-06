@@ -13,11 +13,11 @@ const ProductCard = ({ data }) => {
 
   const products = useSelector((store) => store.products);
 
-  const handleAddToCartBtn = (index) => {
-    setAddToCartBtn(!addToCartBtn)
-    if(addToCart){
-      dispatch(addToCart(products[index]));
-      toast.success('Product added to cart')
+  const handleAddToCartBtn = (id) => {
+    setAddToCartBtn(!addToCartBtn) 
+    if(addToCartBtn){
+      dispatch(addToCart(products.find((product) => product.id === parseInt(id))));
+      toast.success('Product added to cart') 
     }
   };
 
@@ -28,7 +28,7 @@ const ProductCard = ({ data }) => {
     >
       <div className="m-6 ">
         <div>
-          <Link to={`/products/${index}`}>
+          <Link to={`/products/${id}`}>
           <img  className="h-52 p-5 mx-auto" src={image} alt={title} />
           <h1 className={`text-lg ${title.length > 15 ? "truncate" : ""}`}>
             {title}
@@ -47,7 +47,7 @@ const ProductCard = ({ data }) => {
           </Link>
           {addToCartBtn ? (<button
             className="bg-blue-700 text-white px-2 py-1 my-2 rounded w-full"
-            onClick={() => handleAddToCartBtn(index)}
+            onClick={() => handleAddToCartBtn(id)}
           >
             Add to Cart
           </button>) : (<button
