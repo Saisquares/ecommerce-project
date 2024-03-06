@@ -39,7 +39,7 @@ const SelectedProduct = () => {
               </span>
               {rating?.rate}
             </p>
-                <p className='my-1 md:my-3 lg:my-3 font-bold text-md md:text-2xl lg:text-2xl'>${price}</p>
+                <p className='my-1 md:my-3 lg:my-3 font-bold text-md md:text-2xl lg:text-2xl'>Price ${price}</p>
                 {addToCartBtn ? (<button
             className='text-center w-full my-4 bg-blue-700 text-white py-2 rounded'
             onClick={handleAddToCartBtn}
