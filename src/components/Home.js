@@ -55,7 +55,7 @@ const Home = () => {
 
   const handlePriceRangeFilter = (e) => {
     const selectedIndex = e.target.selectedIndex
-    let priceRangeFilterProducts = [...products]
+    let priceRangeFilterProducts = [...filterProducts]
 
     if(selectedIndex === 1){
       priceRangeFilterProducts.sort((a,b) => a.price - b.price)
