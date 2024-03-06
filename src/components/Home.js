@@ -22,6 +22,37 @@ const Home = () => {
     setFilterToggleBtn(!filterToggleBtn)
   }
 
+  const handleCategoryFilter = (e) => {
+    const selectedIndex = e.target.selectedIndex
+    if (selectedIndex === 1){
+      const mensClothing = products.filter((product) => (
+        product.category === "men's clothing"
+      ));
+      setFilterProducts(mensClothing);
+    }
+    else if (selectedIndex === 2){
+      const womensClothing = products.filter((product) => (
+        product.category === "women's clothing"
+      ));
+      setFilterProducts(womensClothing);
+    }
+    else if (selectedIndex === 3){
+      const jewelery = products.filter((product) => (
+        product.category === "jewelery"
+      ));
+      setFilterProducts(jewelery);
+    }
+    else if (selectedIndex === 4){
+      const electronics = products.filter((product) => (
+        product.category === "electronics"
+      ));
+      setFilterProducts(electronics);
+    }
+    else{
+      setFilterProducts(products);
+    }
+  }
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -51,7 +82,6 @@ const Home = () => {
               setSearchText(e.target.value);
               if(e.target.value === ""){
                 setFilterProducts(products)
-
               }
               
             }}
@@ -92,12 +122,12 @@ const Home = () => {
              </div>
              <div className="flex ">
              <p className="ml-2 pr-1 md:mx-2 lg:mx-2 text-sm md:text-md lg:text-md font-semibold">Category</p>
-              <select className="bg-transparent border rounded-md outline-none text-[0.75rem] md:text-md lg:text-md">
+              <select className="bg-transparent border rounded-md outline-none text-[0.75rem] md:text-md lg:text-md" onChange={handleCategoryFilter}>
               <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Default</option>
-                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Men's Clothing</option>
-                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Women's Clothing</option>
-                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Jewelery</option>
-                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md">Electronics</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md" name="Men's Clothing">Men's Clothing</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md" name="Women's Clothing">Women's Clothing</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md" name="Jewelery">Jewelery</option>
+                <option className="bg-blue-700 text-[0.75rem] md:text-md lg:text-md" name="Electronics">Electronics</option>
 
               </select>
              </div>
